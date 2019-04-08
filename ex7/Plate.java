@@ -1,40 +1,36 @@
 package ex7;
 
-import static java.lang.Math.abs;
 
 public class Plate {
+    protected final int MIN_FOOD_VOLUME = 0;
     protected int foodVolume;
-    protected final int MIN_FOOD_VOLUME=0;
+
+    int addF;
+    private int maxFoodVolume;
+
 
     public Plate(int foodVolume) {
-        this.foodVolume = abs (foodVolume);
-
-    }
-
-    public int getFoodVolume() {
-        return foodVolume;
-    }
-
-    public void setFoodVolume(int foodVolume) {
         this.foodVolume = foodVolume;
+        this.maxFoodVolume = foodVolume;
     }
 
-    public boolean decreaseFood(int n){
-        foodVolume -=n;
-//        if (foodVolume <= MIN_FOOD_VOLUME){
-//            System.out.println("Plate is empty");
-//        }
-        return false;
-    }
 
-    public void plateInfo(){
+    public void plateInfo() {
 
-        if (foodVolume <= abs(MIN_FOOD_VOLUME)){
+        if (foodVolume <= MIN_FOOD_VOLUME) {
             System.out.println("тарелка пустая");
-        }else { System.out.println("Еды в тарелке осталось " + foodVolume);
+        } else {
+            System.out.println("Еды в тарелке осталось " + foodVolume);
         }
 
     }
+
+    public void addFood() {
+        addF = maxFoodVolume - foodVolume;
+        foodVolume = foodVolume + addF;
+        System.out.println(foodVolume + " Еда добавлена в тарелку");
+    }
+
 
     @Override
     public String toString() {
